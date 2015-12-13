@@ -4,9 +4,33 @@ angular
 
   function MainRouter($stateProvider, $urlRouterProvider){
     $stateProvider
+      .state('index', {
+        url: "/",
+      })
       .state('sports',  {
           url: '/podcasts/sports',
           templateUrl: "sports.html"
       })
-     $urlRouterProvider.otherwise("/");
-    }
+      .state('comedy',  {
+          url: '/podcasts/comedy',
+          templateUrl: "comedy.html"
+      })
+      .state('technology',  {
+          url: '/podcasts/technology',
+          templateUrl: "technology.html"
+      })
+      .state('feelinglucky',  {
+          url: '/podcasts/feelinglucky',
+          templateUrl: "feelinglucky.html"
+      })
+      .state('ted',  {
+          url: '/podcasts/ted',
+          templateUrl: "ted.html"
+      })
+      .state('business',  {
+          url: '/podcasts/business',
+          templateUrl: "business.html"
+      })
+
+   $urlRouterProvider.otherwise("/");
+  }

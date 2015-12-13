@@ -7,16 +7,67 @@ PodcastsController.$inject = ['$http'];
 
 function PodcastsController($http){
   let self = this;
-  self.all = [];
+  self.sports = [];
+  self.comedy = [];
+  self.technology = [];
+  self.lucky = [];
+  self.ted = [];
+  self.business = [];
 
-getPodcasts();
+  getSports();
+  getComedy();
+  getTechnology();
+  getFeelingLucky();
+  getTed();
+  getBusiness();
 
-function getPodcasts(){
+function getSports(){
   $http
     .get('http://localhost:3000/podcasts/sports')
     .then(function(res){
       console.log(res.data)
-      self.all = res.data.results
+      self.sports = res.data.results
     })
-  }
+}
+
+function getComedy(){
+  $http
+    .get('http://localhost:3000/podcasts/comedy')
+    .then(function(res){
+    self.comedy = res.data.results
+    })
+}
+
+function getTechnology(){
+  $http
+    .get('http://localhost:3000/podcasts/technology')
+    .then(function(res){
+    self.technology = res.data.results
+    })
+}
+
+function getFeelingLucky(){
+  $http
+    .get('http://localhost:3000/podcasts/feelinglucky')
+    .then(function(res){
+    self.lucky = res.data.results
+    })
+}
+
+function getTed(){
+  $http
+    .get('http://localhost:3000/podcasts/ted')
+    .then(function(res){
+    self.ted = res.data.results
+    })
+}
+
+function getBusiness(){
+  $http
+    .get('http://localhost:3000/podcasts/business')
+    .then(function(res){
+    self.business = res.data.results
+    })
+}
+
 }
