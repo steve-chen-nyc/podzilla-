@@ -4,8 +4,9 @@ angular
 
   function MainRouter($stateProvider, $urlRouterProvider){
     $stateProvider
-      .state('index',  {
-          url: '/'
+      .state('sports',  {
+          url: '/podcasts/sports',
+          templateUrl: "sports.html"
       })
      $urlRouterProvider.otherwise("/");
     }

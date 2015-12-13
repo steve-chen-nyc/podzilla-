@@ -12,21 +12,13 @@
   <body ng-app="Podcasts">
 
     <nav>
-      <a ui-sref-active="active" ui-sref="index"> Show All Podcasts </a>
+      <a ui-sref-active="active" ui-sref="sports"> Sports Podcasts </a>
       <a ui-sref-active="active" ui-sref="#"> Add A New Destination </a>
       <a ui-sref-active="active" ui-sref="#"> Show Destination List </a>
     </nav>
 
-    <h1> All Podcasts </h1>
-    <section ng-controller="PodcastsController as podcasts" ui-view>
-    <p> podcasts </p>
-    <ul>
-      <li ng-repeat="podcasts in podcasts.all">
-        <p>{{podcasts.trackName}}</p>
-      </li>
-    </ul>
-  </section>
 
+    <section ng-controller="PodcastsController as podcasts" ui-view> </section>
 
   </body>
 </html>
