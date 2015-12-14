@@ -31,6 +31,9 @@ angular
           url: '/podcasts/business',
           templateUrl: "business.html"
       })
-
+      .state('twitter',  {
+          url: '/users/login/twitter',
+          templateUrl: "twitter.html"
+      })
    $urlRouterProvider.otherwise("/");
   }

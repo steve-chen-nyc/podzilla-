@@ -1,11 +1,12 @@
-<h1> SPORTS PODCASTS </h1>
-<section ng-controller="PodcastsController as podcasts" ui-view>
 
-<ul>
-  <li ng-repeat="podcasts in podcasts.sports">
-    <p>{{podcasts.trackName}} : {{podcasts.primaryGenreName}}</p>
-<a ng-href="{{podcasts.collectionViewUrl}}" target="_blank">   <img ng-src="{{podcasts.artworkUrl100}}"> </a>
 
-  </li>
-</ul>
-</section>
+
+  <h1> SPORTS PODCASTS </h1>
+    <section ng-controller="PodcastsController as podcasts" ui-view>
+      <ul>
+        <li ng-repeat="podcasts in podcasts.sports">
+          <p>{{podcasts.trackName}} : {{podcasts.primaryGenreName}}</p>
+          <a ng-href="{{podcasts.collectionViewUrl}}" target="_blank">   <img ng-src="{{podcasts.artworkUrl100}}"> </a>
+        </li>
+      </ul>
+    </section>

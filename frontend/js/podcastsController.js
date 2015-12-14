@@ -7,19 +7,23 @@ PodcastsController.$inject = ['$http'];
 
 function PodcastsController($http){
   let self = this;
+  // retrieves data from all apis and store it into an array
   self.sports = [];
   self.comedy = [];
   self.technology = [];
   self.lucky = [];
   self.ted = [];
   self.business = [];
+  self.users = [];
 
+  // calls functions below to retrieve all data
   getSports();
   getComedy();
   getTechnology();
   getFeelingLucky();
   getTed();
   getBusiness();
+
 
 function getSports(){
   $http
@@ -65,6 +69,14 @@ function getTed(){
 function getBusiness(){
   $http
     .get('http://localhost:3000/podcasts/business')
+    .then(function(res){
+    self.business = res.data.results
+    })
+}
+
+function getTwitter(){
+  $http
+    .get('http://127.0.0.1:3000/users/profile')
     .then(function(res){
     self.business = res.data.results
     })
