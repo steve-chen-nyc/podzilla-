@@ -17,7 +17,7 @@ function PodcastsController($http){
   self.user = [];
   self.getTwitter = getTwitter;
 
-  // calls functions below to retrieve all data from Apple Itunes Store
+  // calls functions below to retrieve all data
   getSports();
   getComedy();
   getTechnology();
@@ -45,7 +45,6 @@ function getTechnology(){
   $http
     .get('http://localhost:3000/podcasts/technology')
     .then(function(res){
-
     self.technology = res.data.results
     })
 }
