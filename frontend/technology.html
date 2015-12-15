@@ -2,7 +2,7 @@
 
 <h1> TECHNOLOGY PODCASTS </h1>
   <section ng-controller="PodcastsController as podcasts" ui-view>
-      <ul>
+      <ul class="list">
         <li ng-repeat="podcasts in podcasts.technology">
           <p>{{podcasts.trackName}} : {{podcasts.primaryGenreName}}</p>
           <a ng-href="{{podcasts.collectionViewUrl}}" target="_blank"><img ng-src="{{podcasts.artworkUrl100}}"> </a>

@@ -1,0 +1,14 @@
+li {
+  list-style: none;
+  background-color: #D3D3D3;
+  text-align: center;
+  margin: 0 auto;
+  width: 50%;
+  padding: 15px;
+  border-bottom: 1px solid black;
+}
+
+.headline {
+  text-align: center;
+
+}

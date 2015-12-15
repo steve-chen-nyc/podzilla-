@@ -9,7 +9,7 @@ let userSchema = new mongoose.Schema({
   profile_image_url: String,
   provider: String,
   description: String,
-
+  
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now }
 

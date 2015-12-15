@@ -59,15 +59,25 @@ passport.deserializeUser(function(obj,cb) {
 
 
 const app = express();
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow_Headers", "Origin, X-Requested-with, Content-Type, Accept');
+  res.header('Access-Control-Allow-Credentials', true)
+  next();
+})
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({origin: 'http://localhost:8080'}));
 app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 app.use(require('cookie-parser')());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+
 
 let podcast = require('./controllers/podcasts_controller');
 app.use('/podcasts', podcast);

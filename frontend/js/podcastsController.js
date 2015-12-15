@@ -5,6 +5,8 @@ angular.module('Podcasts')
 
 PodcastsController.$inject = ['$http'];
 
+
+
 function PodcastsController($http){
   let self = this;
   // retrieves data from all apis and store it into an array
@@ -14,7 +16,10 @@ function PodcastsController($http){
   self.lucky = [];
   self.ted = [];
   self.business = [];
-  self.users = [];
+  self.user = [];
+  self.getTwitter = getTwitter;
+
+  console.log(self.user)
 
   // calls functions below to retrieve all data
   getSports();
@@ -24,12 +29,10 @@ function PodcastsController($http){
   getTed();
   getBusiness();
 
-
 function getSports(){
   $http
     .get('http://localhost:3000/podcasts/sports')
     .then(function(res){
-      console.log(res.data)
       self.sports = res.data.results
     })
 }
@@ -75,11 +78,39 @@ function getBusiness(){
 }
 
 function getTwitter(){
-  $http
-    .get('http://127.0.0.1:3000/users/profile')
-    .then(function(res){
-    self.business = res.data.results
-    })
+  console.log('function clicked')
+  $.ajax({
+     url: 'http://127.0.0.1:3000/users/profile',
+     dataType: 'json',
+     headers: {
+       "Access-Control-Allow-Credentials": true,
+       "Access-Control-Allow-Origin": "http://localhost:8080"
+     },
+     crossDomain: true,
+     xhrFields: {
+       withCredentials: true
+     }
+  }).done(function(data){
+     self.user = data;
+  });
 }
+
+
+//   $http
+//     .get('http://127.0.0.1:3000/users/profile', {withCredentials : true})
+//     .then(function(res){
+//       if(res.data.error){
+//         $location.path('/')
+//       }
+//       else{
+//         self.user = res.data;
+//         console.log(res);
+//       }
+//     })
+//     .catch(function (error){
+//       if (error) throw error;
+//     });
+// }
+
 
 }

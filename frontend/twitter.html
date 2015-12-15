@@ -1,8 +1,8 @@
-<h1> Login with Twitter </h1>
 
-<a href="http://127.0.0.1:3000/users/login/twitter/" target="_blank"> Login Here </a>
+    <h1> Login with Twitter </h1>
 
-<section ng-controller="PodcastsController as podcasts" ui-view>
-  <li ng-repeat="podcasts in podcasts.users">
-    <p>{{podcasts.name}} : {{podcasts.description}</p>
-  </li>
+    <a id="twitter" href="http://127.0.0.1:3000/users/login/twitter/" target="_blank"> Login Here </a>
+
+  <section ng-controller="PodcastsController as users" ui-view>
+      <button ng-click="users.getTwitter()"> get data </button>
+      <p> {{users.user.name}} </p>
