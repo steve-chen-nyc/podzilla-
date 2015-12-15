@@ -3,6 +3,12 @@
 
     <a id="twitter" href="http://127.0.0.1:3000/users/login/twitter/" target="_blank"> Login Here </a>
 
+
+
   <section ng-controller="PodcastsController as users" ui-view>
-      <button ng-click="users.getTwitter()"> get data </button>
-      <p> {{users.user.name}} </p>
+      <button ng-click="users.getTwitter()"> Show User Profile </button> <br>
+
+      <img ng-src="{{users.user.profile_image_url}}"> <br>
+      <p> {{users.user.name}} </p> <br>
+      <p> {{users.user.provider}} </p> <br>
+      <p> {{users.user.description}} </p> <br>
