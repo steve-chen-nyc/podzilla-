@@ -3,12 +3,11 @@
 <h1 class="headline"> TED PODCASTS </h1>
   <section ng-controller="PodcastsController as podcasts" ui-view>
     <ul class="list">
-      <li ng-repeat="podcasts in podcasts.ted">
+      <li ng-repeat="podcasts in podcasts.ted | orderBy:random | limitTo:5">
         <p> <strong> {{podcasts.trackName}} </strong> </p>
         <p> Release Date: {{podcasts.releaseDate}} </p>
         <p> Genre: {{podcasts.primaryGenreName}} </p>
         <a ng-href="{{podcasts.collectionViewUrl}}" target="_blank"> <img ng-src="{{podcasts.artworkUrl100}}"> </a>
-        <p> <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{podcasts.trackName}} is sooooo Dope!" target="_blank">  Tweet</a> </p>
-      </li>
+        <p> <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text= Found the {{podcasts.trackName}} podcast on PODZILLA. Sooooo Dope!" target="_blank">  Tweet</a> </p>
     </ul>
   </section>

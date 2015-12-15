@@ -16,9 +16,8 @@ function PodcastsController($http){
   self.business = [];
   self.user = [];
   self.getTwitter = getTwitter;
-  console.log('this is self ' + self.user)
 
-  // calls functions below to retrieve all data
+  // calls functions below to retrieve all data from Apple Itunes Store
   getSports();
   getComedy();
   getTechnology();
@@ -46,6 +45,7 @@ function getTechnology(){
   $http
     .get('http://localhost:3000/podcasts/technology')
     .then(function(res){
+
     self.technology = res.data.results
     })
 }
@@ -79,7 +79,6 @@ function getTwitter(){
     url: 'http://127.0.0.1:3000/users/profile',
     dataType: 'json',
     method: 'GET',
-    // data: '',
     headers: {
       "Access-Control-Allow-Credentials": true,
       "Access-Control-Allow-Origin": "http://localhost:8080"
@@ -88,60 +87,10 @@ function getTwitter(){
     xhrFields: {
       withCredentials: true
     }
-  }).then(function(res){
+ }).then(function(res){
     self.user = res.user;
   });
 }
-
-
-
-// function getTwitter(){
-//   console.log('function clicked')
-//   $.ajax({
-//      url: 'http://127.0.0.1:3000/users/profile',
-//      dataType: 'json',
-//      headers: {
-//        "Access-Control-Allow-Credentials": true,
-//        "Access-Control-Allow-Origin": "http://localhost:8080"
-//      },
-//      crossDomain: true,
-//      xhrFields: {
-//        withCredentials: true
-//      }
-//   }).then(function(res){
-//     console.log(res.user);
-//     self.user = res.user.responseText;
-//     console.log('this is the self object' + self.user)
-//   });
-// }
-
-
-// var twitterProfile = function(data) {
-//   console.log(data)
-//   var result = $('#results-container').append('<div>').find('div');
-//   result.attr('class','result');
-//     result.append(' <img src=' + data.user.profile_image_url + '></img>');
-//     result.append(' <p>' + data.user.name + '</p>');
-//     result.append(' <p>' + data.user.location + '</p>');
-//     result.append(' <p>' + data.user.description + '</p>');
-// };
-
-
-//   $http
-//     .get('http://127.0.0.1:3000/users/profile', {withCredentials : true})
-//     .then(function(res){
-//       if(res.data.error){
-//         $location.path('/')
-//       }
-//       else{
-//         self.user = res.data;
-//         console.log(res);
-//       }
-//     })
-//     .catch(function (error){
-//       if (error) throw error;
-//     });
-// }
 
 
 }

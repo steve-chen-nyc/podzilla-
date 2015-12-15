@@ -9,7 +9,6 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const Strategy = require('passport-twitter').Strategy;
 
-
 // OAUTH AUTHENTICATION
 let User = require('./models/user');
 passport.use(new Strategy({

@@ -25,7 +25,4 @@ router.route('/profile')
       res.json({ user: req.user });
     });
 
-
-
-
 module.exports = router;
