@@ -16,3 +16,13 @@ li {
   height: 100px;
   width: 100px;
 }
+
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    url('./assets/imgres.jpg') bottom right 15% no-repeat #000;
+}
+
+#cardsOne {
+    float: right;
+}

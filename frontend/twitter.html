@@ -13,5 +13,6 @@
       <p> Favorite Podcasts </p> <br>
 
       <li ng-repeat="podcasts in users.user.podcasts">
-      <p> {{podcasts.trackName}} </p>
-      </li> 
+      <p> {{podcasts.trackName}} </p> <br> 
+      <a ng-href="{{podcasts.collectionViewUrl}}" target="_blank">   <img ng-src="{{podcasts.artworkUrl100}}"> </a>
+      </li>

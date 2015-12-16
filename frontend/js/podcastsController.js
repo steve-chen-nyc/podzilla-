@@ -16,10 +16,17 @@ function PodcastsController($http,$rootScope){
   self.business = [];
   self.newPodcast = {};
   self.user = {};
+
+  // use functions below
   self.getTwitter = getTwitter;
   self.addPodcast = addPodcast;
+  self.addSportsPodcast = addSportsPodcast;
+  self.addBusinessPodcast = addBusinessPodcast;
+  self.addLuckyPodcast = addLuckyPodcast;
+  self.addTechnologyPodcast = addTechnologyPodcast;
+  self.addTedPodcast = addTedPodcast;
 
-  // calls functions below to retrieve all data
+  // calls functions on page load to retrieve all data
   getSports();
   getComedy();
   getTechnology();
@@ -27,6 +34,9 @@ function PodcastsController($http,$rootScope){
   getTed();
   getBusiness();
 
+
+
+  // API call functions
 function getSports(){
   $http
     .get('http://localhost:3000/podcasts/sports')
@@ -75,25 +85,112 @@ function getBusiness(){
     })
 }
 
-function addPodcast(index){
-    self.newPodcast = self.comedy[index];
-    console.log(self.newPodcast);
-    console.log('this is the user info')
-    console.log(self.user);
+
+  // FUNCTIONS TO ADD PODCASTS TO FAVORITES
+function addTedPodcast(index){
+    self.newPodcast = self.ted[index];
+    console.log(self.newPodcast)
   $http({
-    method: 'PUT',
+    method: 'PATCH',
     url: 'http://localhost:3000/users/profile',
     data: {podcast: self.newPodcast,
-           _id: $rootScope.user._id},
+           id_str: $rootScope.user.id_str},
     headers: {'Content-Type': 'application/json'}
   })
-    // .patch('http://localhost:3000/users/profile', self.newPodcast)
+    .then(function(res){
+      console.log(res + 'was sent to database');
+    })
+    self.newPodcast = {};
+}
+
+
+function addTechnologyPodcast(index){
+    self.newPodcast = self.technology[index];
+    console.log(self.newPodcast)
+  $http({
+    method: 'PATCH',
+    url: 'http://localhost:3000/users/profile',
+    data: {podcast: self.newPodcast,
+           id_str: $rootScope.user.id_str},
+    headers: {'Content-Type': 'application/json'}
+  })
+    .then(function(res){
+      console.log(res + 'was sent to database');
+    })
+    self.newPodcast = {};
+}
+
+
+
+function addLuckyPodcast(index){
+    self.newPodcast = self.lucky[index];
+    console.log(self.newPodcast)
+  $http({
+    method: 'PATCH',
+    url: 'http://localhost:3000/users/profile',
+    data: {podcast: self.newPodcast,
+           id_str: $rootScope.user.id_str},
+    headers: {'Content-Type': 'application/json'}
+  })
+    .then(function(res){
+      console.log(res + 'was sent to database');
+    })
+    self.newPodcast = {};
+}
+
+
+function addBusinessPodcast(index){
+    self.newPodcast = self.business[index];
+    console.log(self.newPodcast)
+  $http({
+    method: 'PATCH',
+    url: 'http://localhost:3000/users/profile',
+    data: {podcast: self.newPodcast,
+           id_str: $rootScope.user.id_str},
+    headers: {'Content-Type': 'application/json'}
+  })
+    .then(function(res){
+      console.log(res + 'was sent to database');
+    })
+    self.newPodcast = {};
+}
+
+
+function addSportsPodcast(index){
+    self.newPodcast = self.sports[index];
+    console.log(self.newPodcast)
+  $http({
+    method: 'PATCH',
+    url: 'http://localhost:3000/users/profile',
+    data: {podcast: self.newPodcast,
+           id_str: $rootScope.user.id_str},
+    headers: {'Content-Type': 'application/json'}
+  })
+    .then(function(res){
+      console.log(res + 'was sent to database');
+    })
+    self.newPodcast = {};
+}
+
+function addPodcast(index){
+  //function for comedy podcasts
+    self.newPodcast = self.comedy[index];
+    console.log(self.newPodcast);
+  $http({
+    method: 'PATCH',
+    url: 'http://localhost:3000/users/profile',
+    data: {podcast: self.newPodcast,
+           id_str: $rootScope.user.id_str},
+    headers: {'Content-Type': 'application/json'}
+  })
     .then(function(res){
       console.log(res + 'was sent to database');
     })
     self.podcast = {};
 }
 
+
+  // PULLS USER DATA FROM SERVER 
 function getTwitter(){
   $.ajax({
     url: 'http://127.0.0.1:3000/users/profile',

@@ -14,7 +14,6 @@ router.route('/login/twitter')
 router.route('/login/twitter/return')
   .get(passport.authenticate('twitter', { failureRedirect: '/login/twitter' }),
     function(req, res) {
-      debugger;
       // res.json(res.req.user);
       res.redirect('http://localhost:8080/webpack-dev-server/');
     });
@@ -23,30 +22,31 @@ router.route('/profile')
   .get(function(req, res){
     res.header("Access-Control-Allow-Credentials", true);
       console.log('hit profile');
-      // res.json('profile', { user: req.user });
       res.json({ user: req.user });
     });
 
 router.route('/profile')
-  .put(updateUser);
+  .patch(updateUser);
 
   function updateUser(req, res) {
-    debugger;
-  let id = req.body._id;
+    let id = req.body.id_str;
+    console.log(id);
+    console.log(req.body.podcast)
 
-  console.log(id);
-    User.findOne({_id: id}, function(err, user){
-    if(err) throw err;
-    console.log(user);
-    if(req.body.podcast)user.podcasts = req.body.podcast;
-    console.log(req.body.podcast);
-    user.save(function(err){
+    User.findOneAndUpdate({id_str: id},
+      {$push: {podcasts: req.body.podcast}},
+      {new: true},
 
-    if(err) throw err;
+      function(err,user) {
+      if(err) throw err;
+      // debugger;
+      if(req.body.podcast) user.podcasts = req.body.podcast;
 
-    res.json({message: 'podcast added successfully', user: user})
-  });
-  })
+      user.save(function(err){
+      if(err) throw err;
+      res.json({message: 'podcast added successfully', user: user})
+    });
+    });
 }
 
 router.route('/')
