@@ -10,3 +10,8 @@
       <p> {{users.user.name}} </p> <br>
       <p> {{users.user.provider}} </p> <br>
       <p> {{users.user.description}} </p> <br>
+      <p> Favorite Podcasts </p> <br>
+
+      <li ng-repeat="podcasts in users.user.podcasts">
+      <p> {{podcasts.trackName}} </p>
+      </li> 

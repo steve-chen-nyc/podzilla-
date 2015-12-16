@@ -3,9 +3,9 @@
 angular.module('Podcasts')
   .controller('PodcastsController', PodcastsController);
 
-PodcastsController.$inject = ['$http'];
+PodcastsController.$inject = ['$http','$rootScope'];
 
-function PodcastsController($http){
+function PodcastsController($http,$rootScope){
   let self = this;
   // retrieves data from all apis and store it into an array
   self.sports = [];
@@ -14,8 +14,10 @@ function PodcastsController($http){
   self.lucky = [];
   self.ted = [];
   self.business = [];
-  self.user = [];
+  self.newPodcast = {};
+  self.user = {};
   self.getTwitter = getTwitter;
+  self.addPodcast = addPodcast;
 
   // calls functions below to retrieve all data
   getSports();
@@ -73,6 +75,25 @@ function getBusiness(){
     })
 }
 
+function addPodcast(index){
+    self.newPodcast = self.comedy[index];
+    console.log(self.newPodcast);
+    console.log('this is the user info')
+    console.log(self.user);
+  $http({
+    method: 'PUT',
+    url: 'http://localhost:3000/users/profile',
+    data: {podcast: self.newPodcast,
+           _id: $rootScope.user._id},
+    headers: {'Content-Type': 'application/json'}
+  })
+    // .patch('http://localhost:3000/users/profile', self.newPodcast)
+    .then(function(res){
+      console.log(res + 'was sent to database');
+    })
+    self.podcast = {};
+}
+
 function getTwitter(){
   $.ajax({
     url: 'http://127.0.0.1:3000/users/profile',
@@ -87,9 +108,8 @@ function getTwitter(){
       withCredentials: true
     }
  }).then(function(res){
+    $rootScope.user = res.user;
     self.user = res.user;
   });
 }
-
-
 }
