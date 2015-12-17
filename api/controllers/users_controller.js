@@ -5,8 +5,7 @@ const passport = require('passport');
 const Strategy = require('passport-twitter').Strategy;
 const mongoose = require('mongoose');
 
-let User = require('../models/user');
-
+let User = require('../models/User');
 
 router.route('/login/twitter')
   .get(passport.authenticate('twitter'));
@@ -14,7 +13,6 @@ router.route('/login/twitter')
 router.route('/login/twitter/return')
   .get(passport.authenticate('twitter', { failureRedirect: '/login/twitter' }),
     function(req, res) {
-      // res.json(res.req.user);
       res.redirect('http://localhost:8080/webpack-dev-server/');
     });
 
@@ -39,7 +37,7 @@ router.route('/profile')
 
       function(err,user) {
       if(err) throw err;
-      // debugger;
+
       if(req.body.podcast) user.podcasts = req.body.podcast;
 
       user.save(function(err){
