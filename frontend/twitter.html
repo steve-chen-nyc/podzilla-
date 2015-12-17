@@ -1,18 +1,12 @@
 
-    <h1> Login with Twitter </h1>
 
-    <a id="twitter" href="http://127.0.0.1:3000/users/login/twitter/" target="_blank"> Login Here </a>
-
-      <section ng-controller="PodcastsController as users" ui-view>
-      <button ng-click="users.getTwitter()"> Show User Profile </button> <br>
-
-      <img class="avatar" ng-src="{{users.user.profile_image_url}}"> <br>
-      <p> {{users.user.name}} </p> <br>
-      <p> {{users.user.provider}} </p> <br>
-      <p> {{users.user.description}} </p> <br>
-      <p> Favorite Podcasts </p> <br>
-
-      <li ng-repeat="podcasts in users.user.podcasts">
-      <p> {{podcasts.trackName}} </p> <br> 
-      <a ng-href="{{podcasts.collectionViewUrl}}" target="_blank">   <img ng-src="{{podcasts.artworkUrl100}}"> </a>
-      </li>
+  <section ng-controller="PodcastsController as users" ui-view>
+    <div class="profile">
+        <h3> What up {{users.user.name}}!  </h3> <br>
+        <li ng-repeat="podcasts in users.user.podcasts">
+          <p> <strong> Saved Podcast </strong> </p> <br>
+          <p> {{podcasts.trackName}} </p> <br>
+          <a ng-href="{{podcasts.collectionViewUrl}}" target="_blank"><img ng-src="{{podcasts.artworkUrl100}}"> </a>
+       </li>
+       <button id="user-profile-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="users.getTwitter()"> See me </button> <br>
+    </div>

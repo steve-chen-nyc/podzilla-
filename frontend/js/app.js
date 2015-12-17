@@ -35,5 +35,9 @@ angular
           url: '/users/login/twitter',
           templateUrl: "twitter.html"
       })
+      .state('category',  {
+          url: '/',
+          templateUrl: "category.html"
+      })
    $urlRouterProvider.otherwise("/");
   }

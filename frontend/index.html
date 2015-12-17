@@ -17,86 +17,24 @@
   </head>
   <body ng-app="Podcasts">
 
+    <button id="demo-menu-lower-left"
+            class="mdl-button mdl-js-button mdl-button--icon">
+      <i class="material-icons">more_vert</i>
+    </button>
 
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" ui-sref-active="active" ui-sref="twitter"> Login With Twitter  </a>
-    </nav>
-
+    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+        for="demo-menu-lower-left">
+      <li class="mdl-menu__item"> <a ui-sref-active="active" ui-sref="index"> Home<a/></li>
+      <li class="mdl-menu__item"> <a ui-sref-active="active" ui-sref="twitter"> My Profile </a></li>
+      <li disabled class="mdl-menu__item"><a ui-sref-active="active" ui-sref="category">Categories</a></li>
+    </ul>
 
     <section ui-view> </section>
 
-    <h1> PODZILLA </h1>
 
-
-   <section id="cardsOne">
-    <div class="demo-card-square mdl-card mdl-shadow--2dp">
-     <div class="mdl-card__title mdl-card--expand">
-       <h2 class="mdl-card__title-text">Business Podcasts</h2>
-     </div>
-     <div class="mdl-card__actions mdl-card--border">
-       <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-          ui-sref-active="active" ui-sref="business"> Business
-       </a>
-     </div>
-   </div>
-
-   <div class="demo-card-square mdl-card mdl-shadow--2dp">
-    <div class="mdl-card__title mdl-card--expand">
-      <h2 class="mdl-card__title-text">TED Podcasts</h2>
-    </div>
-    <div class="mdl-card__actions mdl-card--border">
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-         ui-sref-active="active" ui-sref="ted"> TED
-     </a>
-    </div>
-  </div>
-
-  <div class="demo-card-square mdl-card mdl-shadow--2dp">
-   <div class="mdl-card__title mdl-card--expand">
-     <h2 class="mdl-card__title-text">Sports Podcasts</h2>
-   </div>
-   <div class="mdl-card__actions mdl-card--border">
-     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-        ui-sref-active="active" ui-sref="sports"> Sports
-    </a>
-   </div>
- </div>
-</section>
-
-<section id="cardsTwo">
- <div class="demo-card-square mdl-card mdl-shadow--2dp">
-  <div class="mdl-card__title mdl-card--expand">
-    <h2 class="mdl-card__title-text">Technology Podcasts</h2>
-  </div>
-  <div class="mdl-card__actions mdl-card--border">
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-       ui-sref-active="active" ui-sref="technology"> Technology
-   </a>
-  </div>
-</div>
-
-<div class="demo-card-square mdl-card mdl-shadow--2dp">
- <div class="mdl-card__title mdl-card--expand">
-   <h2 class="mdl-card__title-text"> Comedy Podcasts </h2>
- </div>
- <div class="mdl-card__actions mdl-card--border">
-   <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-      ui-sref-active="active" ui-sref="comedy"> Comedy
-  </a>
- </div>
-</div>
-
-<div class="demo-card-square mdl-card mdl-shadow--2dp">
- <div class="mdl-card__title mdl-card--expand">
-   <h2 class="mdl-card__title-text"> I'm Feeling Lucky </h2>
- </div>
- <div class="mdl-card__actions mdl-card--border">
-   <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-      ui-sref-active="active" ui-sref="lucky"> Lucky me
-  </a>
- </div>
-</div>
-</section>
-
+      <div class="main-container">
+        <h1 class="index_header"> PODZILLA </h1>
+        <a id="twitter" href="http://127.0.0.1:3000/users/login/twitter/" target="_blank"> <img src="./sign-in-with-twitter-gray.png"></a>
+      </div>
   </body>
 </html>
