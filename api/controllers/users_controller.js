@@ -5,7 +5,7 @@ const passport = require('passport');
 const Strategy = require('passport-twitter').Strategy;
 const mongoose = require('mongoose');
 
-let User = require('../models/User');
+let User = require('../models/user');
 
 router.route('/login/twitter')
   .get(passport.authenticate('twitter'));
