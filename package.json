@@ -23,5 +23,9 @@
     "passport-twitter": "^1.0.3",
     "path": "^0.12.7",
     "request": "^2.67.0"
-  }
+  },
+  "engines": {
+     "node": "0.8.19",
+   "npm": "1.1.x"
+   }
 }
