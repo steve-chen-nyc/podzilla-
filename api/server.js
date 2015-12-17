@@ -10,7 +10,8 @@ const passport = require('passport');
 const Strategy = require('passport-twitter').Strategy;
 
 // OAUTH AUTHENTICATION
-let User = require('./models/user');
+const User = require('./models/user');
+
 passport.use(new Strategy({
   consumerKey: process.env.CONSUMER_KEY,
   consumerSecret: process.env.CONSUMER_SECRET,
@@ -74,8 +75,6 @@ app.use(require('cookie-parser')());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
-
-
 
 
 let podcast = require('./controllers/podcasts_controller');
