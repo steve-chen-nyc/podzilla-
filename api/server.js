@@ -84,6 +84,6 @@ app.use('/podcasts', podcast);
 let user = require('./controllers/users_controller');
 app.use('/users', user);
 
-mongoose.connect('mongodb://localhost:27017/podcasts')
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost:27017/podcasts')
 
 app.listen(3000);
