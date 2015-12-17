@@ -23,6 +23,5 @@
     "passport-twitter": "^1.0.3",
     "path": "^0.12.7",
     "request": "^2.67.0",
-    "satellizer": "^0.13.1"
   }
 }
