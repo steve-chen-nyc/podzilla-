@@ -10,7 +10,7 @@ const passport = require('passport');
 const Strategy = require('passport-twitter').Strategy;
 
 // OAUTH AUTHENTICATION
-const User = require('/models/user.js');
+const User = require('./models/user');
 
 passport.use(new Strategy({
   consumerKey: process.env.CONSUMER_KEY,
