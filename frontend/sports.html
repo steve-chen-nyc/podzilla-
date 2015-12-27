@@ -1,0 +1,14 @@
+<h1 class="headline"> SPORTS PODCASTS </h1>
+  <section ng-controller="PodcastsController as podcastsController">
+    <ul class="list">
+      <li ng-repeat="podcasts in podcastsController.sports | limitTo:5 ">
+        <form ng-submit="podcastsController.addSportsPodcast($index)">
+          <p> {{podcasts.trackName}} </p>
+          <p> Genre: {{podcasts.primaryGenreName}} </p>
+          <a ng-href="{{podcasts.collectionViewUrl}}" target="_blank"><img ng-src="{{podcasts.artworkUrl100}}"> </a> <br>
+          <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text= Found the {{podcasts.trackName}} podcast on PODZILLA. RORRR!!"> <img src="./twitter.png"></a>
+          <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" type="submit"  ng-model="podcastsController.newPodcast.podcast" value= "Add Podcast"> <i class="material-icons"> add </i> </button>
+       </form>
+      </li>
+    </ul>
+  </section>
