@@ -16,10 +16,16 @@ router.route('/login/twitter/return')
       res.redirect('http://localhost:8080/webpack-dev-server/');
     });
 
+router.route('/logout')
+  .get(function(req,res){
+    req.session.destroy(function (err) {
+      res.redirect('/')
+    });
+  });
+
 router.route('/profile')
   .get(function(req, res){
     res.header("Access-Control-Allow-Credentials", true);
-      console.log('hit profile');
       res.json({ user: req.user });
     });
 
@@ -28,25 +34,21 @@ router.route('/profile')
 
   function updateUser(req, res) {
     let id = req.body.id_str;
-    console.log(id);
-    console.log(req.body.podcast)
 
     User.findOneAndUpdate({id_str: id},
       {$push: {podcasts: req.body.podcast}},
       {new: true},
 
       function(err,user) {
-      if(err) throw err;
+        if(err) throw err;
 
-      if(req.body.podcast) user.podcasts = req.body.podcast;
+        if(req.body.podcast) user.podcasts = req.body.podcast;
 
-      user.save(function(err){
-      if(err) throw err;
-      res.json({message: 'podcast added successfully', user: user})
-    });
-    });
-}
-
-router.route('/')
+        user.save(function(err){
+        if(err) throw err;
+        res.json({message: 'podcast added successfully', user: user})
+        });
+     });
+  }
 
 module.exports = router;

@@ -18,13 +18,11 @@ passport.use(new Strategy({
   callbackURL: 'http://127.0.0.1:3000/users/login/twitter/return'
   },
   function(token, tokenSecret, profile, done) {
-    console.log("hitting auth route");
     User.findOne({
-        // query's data base to see if profile id_str matches.
+      // query'sdata base to see if profile id_str matches.
       'id_str': profile.id
     }, function(err, user) {
       if (err) return done(err);
-
       if (!user) {
         user = new User({
           id_str: profile._json.id_str,
@@ -34,18 +32,14 @@ passport.use(new Strategy({
           description: profile._json.description,
           provider: profile.provider,
           twitter: profile._json
-      });
+       });
         user.save(function(err) {
           if (err) return (err);
           else
           return done(null, user);
-          console.log('this is return user' + user)
         });
-      }
-      // need to redirect when route has been completed
-          console.log('this is the returned data'  + user);
-      return done(null, user);
-
+     }
+          return done(null, user);
     });
   }));
 
